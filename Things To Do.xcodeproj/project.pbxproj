@@ -7,13 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DB06ACC62C28C30A0031CCF7 /* Things_To_DoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB06ACC52C28C30A0031CCF7 /* Things_To_DoApp.swift */; };
-		DB06ACC82C28C30A0031CCF7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB06ACC72C28C30A0031CCF7 /* ContentView.swift */; };
+		DB06ACC62C28C30A0031CCF7 /* ThingsToDoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB06ACC52C28C30A0031CCF7 /* ThingsToDoApp.swift */; };
+		DB06ACC82C28C30A0031CCF7 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB06ACC72C28C30A0031CCF7 /* HomeView.swift */; };
 		DB06ACCA2C28C30C0031CCF7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB06ACC92C28C30C0031CCF7 /* Assets.xcassets */; };
 		DB06ACCD2C28C30C0031CCF7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB06ACCC2C28C30C0031CCF7 /* Preview Assets.xcassets */; };
 		DB06ACD72C28C30C0031CCF7 /* Things_To_DoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB06ACD62C28C30C0031CCF7 /* Things_To_DoTests.swift */; };
 		DB06ACE12C28C30C0031CCF7 /* Things_To_DoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB06ACE02C28C30C0031CCF7 /* Things_To_DoUITests.swift */; };
 		DB06ACE32C28C30C0031CCF7 /* Things_To_DoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB06ACE22C28C30C0031CCF7 /* Things_To_DoUITestsLaunchTests.swift */; };
+		DB68F8372C2B1FFB000C4B8F /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB68F8362C2B1FFB000C4B8F /* HomeViewModel.swift */; };
+		DB68F83A2C2B2028000C4B8F /* ToDoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB68F8392C2B2028000C4B8F /* ToDoItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,8 +37,8 @@
 
 /* Begin PBXFileReference section */
 		DB06ACC22C28C30A0031CCF7 /* Things To Do.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Things To Do.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		DB06ACC52C28C30A0031CCF7 /* Things_To_DoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Things_To_DoApp.swift; sourceTree = "<group>"; };
-		DB06ACC72C28C30A0031CCF7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		DB06ACC52C28C30A0031CCF7 /* ThingsToDoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThingsToDoApp.swift; sourceTree = "<group>"; };
+		DB06ACC72C28C30A0031CCF7 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		DB06ACC92C28C30C0031CCF7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DB06ACCC2C28C30C0031CCF7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DB06ACD22C28C30C0031CCF7 /* Things To DoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Things To DoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +46,8 @@
 		DB06ACDC2C28C30C0031CCF7 /* Things To DoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Things To DoUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB06ACE02C28C30C0031CCF7 /* Things_To_DoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Things_To_DoUITests.swift; sourceTree = "<group>"; };
 		DB06ACE22C28C30C0031CCF7 /* Things_To_DoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Things_To_DoUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		DB68F8362C2B1FFB000C4B8F /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		DB68F8392C2B2028000C4B8F /* ToDoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,8 +98,9 @@
 		DB06ACC42C28C30A0031CCF7 /* Things To Do */ = {
 			isa = PBXGroup;
 			children = (
-				DB06ACC52C28C30A0031CCF7 /* Things_To_DoApp.swift */,
-				DB06ACC72C28C30A0031CCF7 /* ContentView.swift */,
+				DB68F8382C2B2013000C4B8F /* Models */,
+				DB68F8342C2B1EB8000C4B8F /* Scenes */,
+				DB06ACC52C28C30A0031CCF7 /* ThingsToDoApp.swift */,
 				DB06ACC92C28C30C0031CCF7 /* Assets.xcassets */,
 				DB06ACCB2C28C30C0031CCF7 /* Preview Content */,
 			);
@@ -125,6 +130,31 @@
 				DB06ACE22C28C30C0031CCF7 /* Things_To_DoUITestsLaunchTests.swift */,
 			);
 			path = "Things To DoUITests";
+			sourceTree = "<group>";
+		};
+		DB68F8342C2B1EB8000C4B8F /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				DB68F8352C2B1FE3000C4B8F /* Home */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		DB68F8352C2B1FE3000C4B8F /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				DB06ACC72C28C30A0031CCF7 /* HomeView.swift */,
+				DB68F8362C2B1FFB000C4B8F /* HomeViewModel.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		DB68F8382C2B2013000C4B8F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DB68F8392C2B2028000C4B8F /* ToDoItem.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,8 +287,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DB06ACC82C28C30A0031CCF7 /* ContentView.swift in Sources */,
-				DB06ACC62C28C30A0031CCF7 /* Things_To_DoApp.swift in Sources */,
+				DB06ACC82C28C30A0031CCF7 /* HomeView.swift in Sources */,
+				DB68F8372C2B1FFB000C4B8F /* HomeViewModel.swift in Sources */,
+				DB68F83A2C2B2028000C4B8F /* ToDoItem.swift in Sources */,
+				DB06ACC62C28C30A0031CCF7 /* ThingsToDoApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
