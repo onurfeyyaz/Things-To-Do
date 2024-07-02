@@ -13,9 +13,8 @@ final class HomeViewModel: ObservableObject {
             saveToUserDefaults()
         }
     }
-    // didSet?
-    
-    private let userDefaultsKey = "toDoItemsKey"
+     
+    private let userDefaultsHelper = UserDefaultsHelper()
     
     init() {
         loadFromUserDefaults()
@@ -27,15 +26,10 @@ final class HomeViewModel: ObservableObject {
     }
     
     private func saveToUserDefaults() {
-        if let encodedData = try? JSONEncoder().encode(toDoItems) {
-            UserDefaults.standard.set(encodedData, forKey: userDefaultsKey)
-        }
+        userDefaultsHelper.saveToDoItems(toDoItems)
     }
     
     private func loadFromUserDefaults() {
-        if let savedData = UserDefaults.standard.data(forKey: userDefaultsKey),
-           let decodedItems = try? JSONDecoder().decode([ToDoItem].self, from: savedData) {
-            toDoItems = decodedItems
-        }
+        toDoItems = userDefaultsHelper.loadToDoItems()
     }
 }
