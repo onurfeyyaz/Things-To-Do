@@ -8,7 +8,13 @@
 import SwiftUI
 
 struct HomeView: View {
-    @ObservedObject private var viewModel = HomeViewModel()
+    @StateObject private var viewModel: HomeViewModel
+    
+    init() {
+        let userDefaultsHelper = UserDefaultsHelper<ToDoItem>(userDefaultsKey: "toDoItemsKey")
+        _viewModel = StateObject(wrappedValue: HomeViewModel(userDefaultsHelper: userDefaultsHelper))
+    }
+    
     @State private var newToDoTitle = ""
     
     var body: some View {

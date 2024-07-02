@@ -8,16 +8,18 @@
 import Foundation
 
 final class HomeViewModel: ObservableObject {
+    
     @Published var toDoItems: [ToDoItem] = [] {
         didSet {
             saveToUserDefaults()
         }
     }
-     
-    private let userDefaultsHelper = UserDefaultsHelper()
     
-    init() {
-        loadFromUserDefaults()
+    private let userDefaultsHelper: UserDefaultsHelper<ToDoItem>
+    
+    init(userDefaultsHelper: UserDefaultsHelper<ToDoItem>) {
+        self.userDefaultsHelper = userDefaultsHelper
+        self.toDoItems = loadFromUserDefaults()
     }
     
     func addToDoItem(title: String) {
@@ -29,7 +31,7 @@ final class HomeViewModel: ObservableObject {
         userDefaultsHelper.saveToDoItems(toDoItems)
     }
     
-    private func loadFromUserDefaults() {
-        toDoItems = userDefaultsHelper.loadToDoItems()
+    private func loadFromUserDefaults() -> [ToDoItem] {
+        userDefaultsHelper.loadToDoItems()
     }
 }

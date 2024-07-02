@@ -7,25 +7,37 @@
 
 import Foundation
 
-final class UserDefaultsHelper {
-    
-    private let toDoItemsKey = "toDoItemsKey"
+protocol UserDefaultsHelperProtocol {
+    associatedtype T: Codable
+    func saveToDoItems(_ items: [T])
+    func loadToDoItems() -> [T]
+}
 
-    func saveToDoItems(_ items: [ToDoItem]) {
+final class UserDefaultsHelper<T: Codable>: UserDefaultsHelperProtocol {
+    
+    private let userDefaultsKey: String
+    
+    init(userDefaultsKey: String) {
+        self.userDefaultsKey = userDefaultsKey
+    }
+
+    func saveToDoItems(_ items: [T]) {
         do {
             let encodedData = try JSONEncoder().encode(items)
-            UserDefaults.standard.set(encodedData, forKey: toDoItemsKey)
+            UserDefaults.standard.set(encodedData, forKey: userDefaultsKey)
         } catch {
+            // TODO: print usage when it's production?
             print("UserDefaults encoding error: \(error)")
         }
     }
     
-    func loadToDoItems() -> [ToDoItem] {
-        if let savedData = UserDefaults.standard.data(forKey: toDoItemsKey) {
+    func loadToDoItems() -> [T] {
+        if let savedData = UserDefaults.standard.data(forKey: userDefaultsKey) {
             do {
-                let decodedItems = try JSONDecoder().decode([ToDoItem].self, from: savedData)
+                let decodedItems = try JSONDecoder().decode([T].self, from: savedData)
                 return decodedItems
             } catch {
+                // TODO: print usage when it's production?
                 print("UserDefaults decoding error: \(error)")
             }
         }
