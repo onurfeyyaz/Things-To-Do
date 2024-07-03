@@ -14,6 +14,9 @@
 		DB06ACD72C28C30C0031CCF7 /* Things_To_DoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB06ACD62C28C30C0031CCF7 /* Things_To_DoTests.swift */; };
 		DB06ACE12C28C30C0031CCF7 /* Things_To_DoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB06ACE02C28C30C0031CCF7 /* Things_To_DoUITests.swift */; };
 		DB06ACE32C28C30C0031CCF7 /* Things_To_DoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB06ACE22C28C30C0031CCF7 /* Things_To_DoUITestsLaunchTests.swift */; };
+		DB19D0B82C3618E2003BDFF8 /* AddToDoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB19D0B72C3618E2003BDFF8 /* AddToDoView.swift */; };
+		DB19D0BA2C3618F0003BDFF8 /* AddToDoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB19D0B92C3618F0003BDFF8 /* AddToDoViewModel.swift */; };
+		DB19D0BC2C361947003BDFF8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB19D0BB2C361947003BDFF8 /* ContentView.swift */; };
 		DB68F8372C2B1FFB000C4B8F /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB68F8362C2B1FFB000C4B8F /* HomeViewModel.swift */; };
 		DB68F83A2C2B2028000C4B8F /* ToDoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB68F8392C2B2028000C4B8F /* ToDoItem.swift */; };
 /* End PBXBuildFile section */
@@ -46,6 +49,9 @@
 		DB06ACDC2C28C30C0031CCF7 /* Things To DoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Things To DoUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB06ACE02C28C30C0031CCF7 /* Things_To_DoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Things_To_DoUITests.swift; sourceTree = "<group>"; };
 		DB06ACE22C28C30C0031CCF7 /* Things_To_DoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Things_To_DoUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		DB19D0B72C3618E2003BDFF8 /* AddToDoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToDoView.swift; sourceTree = "<group>"; };
+		DB19D0B92C3618F0003BDFF8 /* AddToDoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToDoViewModel.swift; sourceTree = "<group>"; };
+		DB19D0BB2C361947003BDFF8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		DB68F8362C2B1FFB000C4B8F /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		DB68F8392C2B2028000C4B8F /* ToDoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -132,10 +138,20 @@
 			path = "Things To DoUITests";
 			sourceTree = "<group>";
 		};
+		DB19D0B62C3618AA003BDFF8 /* Add */ = {
+			isa = PBXGroup;
+			children = (
+				DB19D0B72C3618E2003BDFF8 /* AddToDoView.swift */,
+				DB19D0B92C3618F0003BDFF8 /* AddToDoViewModel.swift */,
+			);
+			path = Add;
+			sourceTree = "<group>";
+		};
 		DB68F8342C2B1EB8000C4B8F /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
 				DB68F8352C2B1FE3000C4B8F /* Home */,
+				DB19D0B62C3618AA003BDFF8 /* Add */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -145,6 +161,7 @@
 			children = (
 				DB06ACC72C28C30A0031CCF7 /* HomeView.swift */,
 				DB68F8362C2B1FFB000C4B8F /* HomeViewModel.swift */,
+				DB19D0BB2C361947003BDFF8 /* ContentView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -288,8 +305,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB06ACC82C28C30A0031CCF7 /* HomeView.swift in Sources */,
+				DB19D0B82C3618E2003BDFF8 /* AddToDoView.swift in Sources */,
+				DB19D0BC2C361947003BDFF8 /* ContentView.swift in Sources */,
 				DB68F8372C2B1FFB000C4B8F /* HomeViewModel.swift in Sources */,
 				DB68F83A2C2B2028000C4B8F /* ToDoItem.swift in Sources */,
+				DB19D0BA2C3618F0003BDFF8 /* AddToDoViewModel.swift in Sources */,
 				DB06ACC62C28C30A0031CCF7 /* ThingsToDoApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
