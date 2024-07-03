@@ -7,6 +7,10 @@
 
 import Foundation
 
+protocol HomeViewModelProtocol {
+    func addToDoItem(title: String)
+}
+
 final class HomeViewModel: ObservableObject {
     
     @Published var toDoItems: [ToDoItem] = [] {
@@ -22,16 +26,19 @@ final class HomeViewModel: ObservableObject {
         self.toDoItems = loadFromUserDefaults()
     }
     
-    func addToDoItem(title: String) {
-        let newItem = ToDoItem(title: title, isCompleted: false)
-        toDoItems.append(newItem)
-    }
-    
     private func saveToUserDefaults() {
         userDefaultsHelper.saveToDoItems(toDoItems)
     }
     
     private func loadFromUserDefaults() -> [ToDoItem] {
         userDefaultsHelper.loadToDoItems()
+    }
+}
+
+extension HomeViewModel: HomeViewModelProtocol {
+    
+    func addToDoItem(title: String) {
+        let newItem = ToDoItem(title: title, isCompleted: false)
+        toDoItems.append(newItem)
     }
 }

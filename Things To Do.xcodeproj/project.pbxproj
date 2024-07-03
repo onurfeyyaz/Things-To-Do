@@ -15,6 +15,7 @@
 		DB06ACE12C28C30C0031CCF7 /* Things_To_DoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB06ACE02C28C30C0031CCF7 /* Things_To_DoUITests.swift */; };
 		DB06ACE32C28C30C0031CCF7 /* Things_To_DoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB06ACE22C28C30C0031CCF7 /* Things_To_DoUITestsLaunchTests.swift */; };
 		DB19D0B32C345FC6003BDFF8 /* UserDefaultsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB19D0B22C345FC6003BDFF8 /* UserDefaultsHelper.swift */; };
+		DB19D0B52C361310003BDFF8 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB19D0B42C361310003BDFF8 /* AppConstants.swift */; };
 		DB68F8372C2B1FFB000C4B8F /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB68F8362C2B1FFB000C4B8F /* HomeViewModel.swift */; };
 		DB68F83A2C2B2028000C4B8F /* ToDoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB68F8392C2B2028000C4B8F /* ToDoItem.swift */; };
 /* End PBXBuildFile section */
@@ -48,6 +49,7 @@
 		DB06ACE02C28C30C0031CCF7 /* Things_To_DoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Things_To_DoUITests.swift; sourceTree = "<group>"; };
 		DB06ACE22C28C30C0031CCF7 /* Things_To_DoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Things_To_DoUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		DB19D0B22C345FC6003BDFF8 /* UserDefaultsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsHelper.swift; sourceTree = "<group>"; };
+		DB19D0B42C361310003BDFF8 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		DB68F8362C2B1FFB000C4B8F /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		DB68F8392C2B2028000C4B8F /* ToDoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -139,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				DB19D0B22C345FC6003BDFF8 /* UserDefaultsHelper.swift */,
+				DB19D0B42C361310003BDFF8 /* AppConstants.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -299,6 +302,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB19D0B32C345FC6003BDFF8 /* UserDefaultsHelper.swift in Sources */,
+				DB19D0B52C361310003BDFF8 /* AppConstants.swift in Sources */,
 				DB06ACC82C28C30A0031CCF7 /* HomeView.swift in Sources */,
 				DB68F8372C2B1FFB000C4B8F /* HomeViewModel.swift in Sources */,
 				DB68F83A2C2B2028000C4B8F /* ToDoItem.swift in Sources */,
