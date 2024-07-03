@@ -15,8 +15,9 @@ protocol UserDefaultsHelperProtocol {
 
 final class UserDefaultsHelper<T: Codable>: UserDefaultsHelperProtocol {
     
+    private let userDefaultStandart = UserDefaults.standard
     private let userDefaultsKey: String
-    
+
     init(userDefaultsKey: String) {
         self.userDefaultsKey = userDefaultsKey
     }
@@ -24,21 +25,27 @@ final class UserDefaultsHelper<T: Codable>: UserDefaultsHelperProtocol {
     func saveToDoItems(_ items: [T]) {
         do {
             let encodedData = try JSONEncoder().encode(items)
-            UserDefaults.standard.set(encodedData, forKey: userDefaultsKey)
+            userDefaultStandart.set(encodedData, forKey: userDefaultsKey)
         } catch {
-            // TODO: print usage when it's production?
-            print("UserDefaults encoding error: \(error)")
+            #if DEBUG
+                print("UserDefaults encoding error: \(error)")
+            #else
+                //TODO: show generic alert view
+            #endif
         }
     }
     
     func loadToDoItems() -> [T] {
-        if let savedData = UserDefaults.standard.data(forKey: userDefaultsKey) {
+        if let savedData = userDefaultStandart.data(forKey: userDefaultsKey) {
             do {
                 let decodedItems = try JSONDecoder().decode([T].self, from: savedData)
                 return decodedItems
             } catch {
-                // TODO: print usage when it's production?
-                print("UserDefaults decoding error: \(error)")
+                #if DEBUG
+                    print("UserDefaults decoding error: \(error)")
+                #else
+                    //TODO: show generic alert view
+                #endif
             }
         }
         return []
