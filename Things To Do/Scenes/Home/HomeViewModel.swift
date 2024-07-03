@@ -7,29 +7,38 @@
 
 import Foundation
 
+protocol HomeViewModelProtocol {
+    func addToDoItem(title: String)
+}
+
 final class HomeViewModel: ObservableObject {
+    
     @Published var toDoItems: [ToDoItem] = [] {
         didSet {
             saveToUserDefaults()
         }
     }
-     
-    private let userDefaultsHelper = UserDefaultsHelper()
     
-    init() {
-        loadFromUserDefaults()
-    }
+    private let userDefaultsHelper: UserDefaultsHelper<ToDoItem>
     
-    func addToDoItem(title: String) {
-        let newItem = ToDoItem(title: title, isCompleted: false)
-        toDoItems.append(newItem)
+    init(userDefaultsHelper: UserDefaultsHelper<ToDoItem>) {
+        self.userDefaultsHelper = userDefaultsHelper
+        self.toDoItems = loadFromUserDefaults()
     }
     
     private func saveToUserDefaults() {
         userDefaultsHelper.saveToDoItems(toDoItems)
     }
     
-    private func loadFromUserDefaults() {
-        toDoItems = userDefaultsHelper.loadToDoItems()
+    private func loadFromUserDefaults() -> [ToDoItem] {
+        userDefaultsHelper.loadToDoItems()
+    }
+}
+
+extension HomeViewModel: HomeViewModelProtocol {
+    
+    func addToDoItem(title: String) {
+        let newItem = ToDoItem(title: title, isCompleted: false)
+        toDoItems.append(newItem)
     }
 }
