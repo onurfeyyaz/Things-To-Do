@@ -13,25 +13,21 @@ protocol HomeViewModelProtocol {
 
 final class HomeViewModel: ObservableObject {
     
-    @Published var toDoItems: [ToDoItem] = [] {
-        didSet {
-            saveToUserDefaults()
-        }
-    }
+    @Published var toDoItems: [ToDoItem] = []
     
     private let userDefaultsHelper: UserDefaultsHelper<ToDoItem>
     
-    init(userDefaultsHelper: UserDefaultsHelper<ToDoItem>) {
+    init(userDefaultsHelper: UserDefaultsHelper<ToDoItem> = UserDefaultsHelper<ToDoItem>(userDefaultsKey: Constants.toDoItemsKey)) {
         self.userDefaultsHelper = userDefaultsHelper
         self.toDoItems = loadFromUserDefaults()
     }
     
     private func saveToUserDefaults() {
-        userDefaultsHelper.saveToDoItems(toDoItems)
+        userDefaultsHelper.saveData(toDoItems)
     }
     
     private func loadFromUserDefaults() -> [ToDoItem] {
-        userDefaultsHelper.loadToDoItems()
+        userDefaultsHelper.loadData()
     }
 }
 
@@ -40,5 +36,6 @@ extension HomeViewModel: HomeViewModelProtocol {
     func addToDoItem(title: String) {
         let newItem = ToDoItem(title: title, isCompleted: false)
         toDoItems.append(newItem)
+        saveToUserDefaults()
     }
 }

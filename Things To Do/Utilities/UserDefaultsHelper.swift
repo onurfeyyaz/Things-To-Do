@@ -9,8 +9,8 @@ import Foundation
 
 protocol UserDefaultsHelperProtocol {
     associatedtype T: Codable
-    func saveToDoItems(_ items: [T])
-    func loadToDoItems() -> [T]
+    func saveData(_ items: [T])
+    func loadData() -> [T]
 }
 
 final class UserDefaultsHelper<T: Codable>: UserDefaultsHelperProtocol {
@@ -22,7 +22,7 @@ final class UserDefaultsHelper<T: Codable>: UserDefaultsHelperProtocol {
         self.userDefaultsKey = userDefaultsKey
     }
 
-    func saveToDoItems(_ items: [T]) {
+    func saveData(_ items: [T]) {
         do {
             let encodedData = try JSONEncoder().encode(items)
             userDefaultStandart.set(encodedData, forKey: userDefaultsKey)
@@ -35,7 +35,7 @@ final class UserDefaultsHelper<T: Codable>: UserDefaultsHelperProtocol {
         }
     }
     
-    func loadToDoItems() -> [T] {
+    func loadData() -> [T] {
         if let savedData = userDefaultStandart.data(forKey: userDefaultsKey) {
             do {
                 let decodedItems = try JSONDecoder().decode([T].self, from: savedData)
