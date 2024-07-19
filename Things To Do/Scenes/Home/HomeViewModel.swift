@@ -22,10 +22,6 @@ final class HomeViewModel: ObservableObject {
         self.toDoItems = loadFromUserDefaults()
     }
     
-    private func saveToUserDefaults() {
-        userDefaultsHelper.saveData(toDoItems)
-    }
-    
     private func loadFromUserDefaults() -> [ToDoItem] {
         userDefaultsHelper.loadData()
     }
@@ -36,6 +32,7 @@ extension HomeViewModel: HomeViewModelProtocol {
     func addToDoItem(title: String) {
         let newItem = ToDoItem(title: title, isCompleted: false)
         toDoItems.append(newItem)
-        saveToUserDefaults()
+        
+        userDefaultsHelper.saveData(toDoItems)
     }
 }
