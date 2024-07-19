@@ -16,9 +16,10 @@
 		DB06ACE32C28C30C0031CCF7 /* Things_To_DoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB06ACE22C28C30C0031CCF7 /* Things_To_DoUITestsLaunchTests.swift */; };
 		DB19D0B82C3618E2003BDFF8 /* AddToDoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB19D0B72C3618E2003BDFF8 /* AddToDoView.swift */; };
 		DB19D0BA2C3618F0003BDFF8 /* AddToDoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB19D0B92C3618F0003BDFF8 /* AddToDoViewModel.swift */; };
-		DB19D0BC2C361947003BDFF8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB19D0BB2C361947003BDFF8 /* ContentView.swift */; };
+		DB19D0BC2C361947003BDFF8 /* TabbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB19D0BB2C361947003BDFF8 /* TabbarView.swift */; };
 		DB68F8372C2B1FFB000C4B8F /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB68F8362C2B1FFB000C4B8F /* HomeViewModel.swift */; };
 		DB68F83A2C2B2028000C4B8F /* ToDoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB68F8392C2B2028000C4B8F /* ToDoItem.swift */; };
+		DB6D43D02C4AD14700EC6BE9 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6D43CF2C4AD14700EC6BE9 /* Router.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,9 +52,10 @@
 		DB06ACE22C28C30C0031CCF7 /* Things_To_DoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Things_To_DoUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		DB19D0B72C3618E2003BDFF8 /* AddToDoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToDoView.swift; sourceTree = "<group>"; };
 		DB19D0B92C3618F0003BDFF8 /* AddToDoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToDoViewModel.swift; sourceTree = "<group>"; };
-		DB19D0BB2C361947003BDFF8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		DB19D0BB2C361947003BDFF8 /* TabbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarView.swift; sourceTree = "<group>"; };
 		DB68F8362C2B1FFB000C4B8F /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		DB68F8392C2B2028000C4B8F /* ToDoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItem.swift; sourceTree = "<group>"; };
+		DB6D43CF2C4AD14700EC6BE9 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 		DB06ACC42C28C30A0031CCF7 /* Things To Do */ = {
 			isa = PBXGroup;
 			children = (
+				DB6D43CE2C4AD13400EC6BE9 /* Routes */,
 				DB68F8382C2B2013000C4B8F /* Models */,
 				DB68F8342C2B1EB8000C4B8F /* Scenes */,
 				DB06ACC52C28C30A0031CCF7 /* ThingsToDoApp.swift */,
@@ -161,7 +164,7 @@
 			children = (
 				DB06ACC72C28C30A0031CCF7 /* HomeView.swift */,
 				DB68F8362C2B1FFB000C4B8F /* HomeViewModel.swift */,
-				DB19D0BB2C361947003BDFF8 /* ContentView.swift */,
+				DB19D0BB2C361947003BDFF8 /* TabbarView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -172,6 +175,14 @@
 				DB68F8392C2B2028000C4B8F /* ToDoItem.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		DB6D43CE2C4AD13400EC6BE9 /* Routes */ = {
+			isa = PBXGroup;
+			children = (
+				DB6D43CF2C4AD14700EC6BE9 /* Router.swift */,
+			);
+			path = Routes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -304,9 +315,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB6D43D02C4AD14700EC6BE9 /* Router.swift in Sources */,
 				DB06ACC82C28C30A0031CCF7 /* HomeView.swift in Sources */,
 				DB19D0B82C3618E2003BDFF8 /* AddToDoView.swift in Sources */,
-				DB19D0BC2C361947003BDFF8 /* ContentView.swift in Sources */,
+				DB19D0BC2C361947003BDFF8 /* TabbarView.swift in Sources */,
 				DB68F8372C2B1FFB000C4B8F /* HomeViewModel.swift in Sources */,
 				DB68F83A2C2B2028000C4B8F /* ToDoItem.swift in Sources */,
 				DB19D0BA2C3618F0003BDFF8 /* AddToDoViewModel.swift in Sources */,
