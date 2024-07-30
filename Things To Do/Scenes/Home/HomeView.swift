@@ -15,14 +15,17 @@ struct HomeView: View {
         NavigationView {
             VStack {
                 HStack {
-                    TextField("Add something to do", text: $newToDoTitle)
+                    TextField(Constants.Content.addTextToTextField, text: $newToDoTitle)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
+                    
                     Button(action: {
                         guard !newToDoTitle.isEmpty else { return }
+                        
                         viewModel.addToDoItem(title: newToDoTitle)
                         newToDoTitle = ""
+                        
                     }) {
-                        Text("Add")
+                        Text(Constants.Content.add)
                     }
                 }
                 .padding()
@@ -35,7 +38,7 @@ struct HomeView: View {
                     }
                 }
             }
-            .navigationTitle("Things To Do")
+            .navigationTitle(Constants.appName)
         }
     }
 }
