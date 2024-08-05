@@ -12,14 +12,14 @@ struct HomeView: View {
     @State private var newToDoTitle = ""
     
     var body: some View {
-        NavigationView {
+        NavigationSplitView {
             VStack {
                 HStack {
                     TextField("Add something to do", text: $newToDoTitle)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                     Button(action: {
                         guard !newToDoTitle.isEmpty else { return }
-                        viewModel.addToDoItem(title: newToDoTitle)
+                        //viewModel.addToDoItem(title: newToDoTitle)
                         newToDoTitle = ""
                     }) {
                         Text("Add")
@@ -36,6 +36,8 @@ struct HomeView: View {
                 }
             }
             .navigationTitle("Things To Do")
+        } detail: {
+            Text("Select your thing to edit!")
         }
     }
 }

@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import SwiftUI
 
 struct TabbarView: View {
     @StateObject var router = Router()

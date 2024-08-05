@@ -21,9 +21,8 @@ final class HomeViewModel: ObservableObject {
         loadFromUserDefaults()
     }
     
-    func addToDoItem(title: String) {
-        let newItem = ToDoItem(title: title, isCompleted: false)
-        toDoItems.append(newItem)
+    func addToDo(item: ToDoItem) {
+        toDoItems.append(item)
     }
     
     private func saveToUserDefaults() {
