@@ -7,34 +7,28 @@
 
 import Foundation
 
+protocol HomeViewModelProtocol {
+    func addToDo(item: ToDoItem)
+}
+
 final class HomeViewModel: ObservableObject {
-    @Published var toDoItems: [ToDoItem] = [] {
-        didSet {
-            saveToUserDefaults()
-        }
-    }
-    // didSet?
     
-    private let userDefaultsKey = "toDoItemsKey"
+    @Published var toDoItems: [ToDoItem] = []
     
-    init() {
-        loadFromUserDefaults()
+    private let userDefaultsHelper: UserDefaultsHelper<ToDoItem>
+    
+    init(userDefaultsHelper: UserDefaultsHelper<ToDoItem> = UserDefaultsHelper<ToDoItem>(userDefaultsKey: Constants.toDoItemsKey)) {
+        self.userDefaultsHelper = userDefaultsHelper
+        self.toDoItems = userDefaultsHelper.loadData()
+
     }
+}
+
+extension HomeViewModel: HomeViewModelProtocol {
     
     func addToDo(item: ToDoItem) {
         toDoItems.append(item)
-    }
-    
-    private func saveToUserDefaults() {
-        if let encodedData = try? JSONEncoder().encode(toDoItems) {
-            UserDefaults.standard.set(encodedData, forKey: userDefaultsKey)
-        }
-    }
-    
-    private func loadFromUserDefaults() {
-        if let savedData = UserDefaults.standard.data(forKey: userDefaultsKey),
-           let decodedItems = try? JSONDecoder().decode([ToDoItem].self, from: savedData) {
-            toDoItems = decodedItems
-        }
+        
+        userDefaultsHelper.saveData(toDoItems)
     }
 }
