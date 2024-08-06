@@ -8,12 +8,13 @@
 import Foundation
 
 protocol UserDefaultsHelperProtocol {
-    associatedtype T: Codable
+    associatedtype T: Codable & Equatable
     func saveData(_ items: [T])
     func loadData() -> [T]
+    func removeData(_ item: T)
 }
 
-final class UserDefaultsHelper<T: Codable>: UserDefaultsHelperProtocol {
+final class UserDefaultsHelper<T: Codable & Equatable>: UserDefaultsHelperProtocol {
     
     private let userDefaultStandart = UserDefaults.standard
     private let userDefaultsKey: String
@@ -49,5 +50,11 @@ final class UserDefaultsHelper<T: Codable>: UserDefaultsHelperProtocol {
             }
         }
         return []
+    }
+    
+    func removeData(_ item: T) {
+        var items = loadData()
+        items.removeAll() { $0 == item }
+        saveData(items)
     }
 }

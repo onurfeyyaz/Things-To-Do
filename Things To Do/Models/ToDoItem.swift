@@ -19,7 +19,7 @@ enum ToDoPriority: Codable {
     case high
 }
 
-struct ToDoItem: Identifiable, Codable {
+struct ToDoItem: Identifiable, Codable, Equatable {
     let id: UUID
     var title: String
     var description: String
