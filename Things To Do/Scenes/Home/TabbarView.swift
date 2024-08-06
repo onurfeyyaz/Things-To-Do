@@ -10,7 +10,7 @@ import SwiftUI
 struct TabbarView: View {
     @StateObject var router = Router()
     @StateObject private var homeViewModel = HomeViewModel()
-
+    
     var body: some View {
         NavigationStack(path: $router.navPath) {
             TabView(selection: $router.selectedTab) {
@@ -27,7 +27,7 @@ struct TabbarView: View {
                     }
                     .tag(1)
                 
-                Text("Profile")
+                ProfileView(toDoItems: homeViewModel.toDoItems)
                     .tabItem {
                         Label(Constants.Tabbar.profileView, systemImage: "person")
                     }

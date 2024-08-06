@@ -44,7 +44,7 @@ struct ToDoItem: Identifiable, Codable, Equatable {
         }
     }
     
-    init(title: String, 
+    init(title: String,
          description: String,
          category: String = "",
          location: String? = nil,

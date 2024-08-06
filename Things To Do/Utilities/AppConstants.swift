@@ -53,4 +53,14 @@ struct Constants {
         
         static let addToDoButton = "Add To Do"
     }
+    
+    struct ProfileView {
+        static let totalTask = "Total Tasks: "
+        static let completionPercentage = "Completion Percentage"
+        static let taskStatusDistribution = "Task Status Distribution"
+        static let status = "Status"
+        static let taskPriorityDistribution = "Task Priority Distribution"
+        static let priority = "Priority"
+        static let count = "Count"
+    }
 }
