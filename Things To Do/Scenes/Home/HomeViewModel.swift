@@ -8,7 +8,10 @@
 import Foundation
 
 protocol HomeViewModelProtocol {
-    func addToDo(item: ToDoItem)
+    func saveData(toDoItems: [ToDoItem])
+    func loadData()
+    func removeData(index: IndexSet)
+    func isToDoCompleted(_ index: Int)
 }
 
 final class HomeViewModel: ObservableObject {
@@ -19,16 +22,28 @@ final class HomeViewModel: ObservableObject {
     
     init(userDefaultsHelper: UserDefaultsHelper<ToDoItem> = UserDefaultsHelper<ToDoItem>(userDefaultsKey: Constants.toDoItemsKey)) {
         self.userDefaultsHelper = userDefaultsHelper
-        self.toDoItems = userDefaultsHelper.loadData()
-
+        self.loadData()
     }
 }
 
 extension HomeViewModel: HomeViewModelProtocol {
+    func isToDoCompleted(_ index: Int) {
+        toDoItems[index].isCompleted.toggle()
+        saveData(toDoItems: toDoItems)
+    }
     
-    func addToDo(item: ToDoItem) {
-        toDoItems.append(item)
-        
+    func saveData(toDoItems: [ToDoItem]) {
         userDefaultsHelper.saveData(toDoItems)
+    }
+    
+    func removeData(index: IndexSet) {
+        for offset in index {
+            userDefaultsHelper.removeData(toDoItems[offset])
+            toDoItems.remove(at: offset)
+        }
+    }
+    
+    func loadData() {
+        toDoItems = userDefaultsHelper.loadData()
     }
 }
