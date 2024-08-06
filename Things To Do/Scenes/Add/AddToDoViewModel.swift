@@ -8,20 +8,30 @@
 import Foundation
 
 protocol AddToDoViewModelProtocol {
-    func addToDo( item: inout ToDoItem, tags: String, deadline: Date, reminder: Date)
+    func addToDo(title: String, description: String, category: String, deadline: Date?, reminder: Date?, priority: ToDoPriority, status: ToDoStatus, tags: String)
 }
 
-final class AddToDoViewModel: ObservableObject {
-    var toDoItems: [ToDoItem] = []
+final class AddToDoViewModel: ObservableObject, AddToDoViewModelProtocol {
+    private let homeViewModel: HomeViewModel = HomeViewModel()
+    private let userDefaultsHelper: UserDefaultsHelper<ToDoItem>
     
-}
-
-extension AddToDoViewModel: AddToDoViewModelProtocol {
-    func addToDo(item: inout ToDoItem, tags: String, deadline: Date, reminder: Date) {
-        item.tags = tags.split(separator: ",").map { String($0).trimmingCharacters(in: .whitespaces) }
-        item.deadline = deadline
-        item.reminder = reminder
+    init(userDefaultsHelper: UserDefaultsHelper<ToDoItem> = UserDefaultsHelper<ToDoItem>(userDefaultsKey: Constants.toDoItemsKey)) {
+        self.userDefaultsHelper = userDefaultsHelper
+    }
+    
+    func addToDo(title: String, description: String, category: String, deadline: Date?, reminder: Date?, priority: ToDoPriority, status: ToDoStatus, tags: String) {
+        let newToDo = ToDoItem(
+            title: title,
+            description: description,
+            category: category,
+            deadline: deadline,
+            reminder: reminder,
+            priority: priority,
+            status: status,
+            tags: tags.split(separator: ",").map { String($0).trimmingCharacters(in: .whitespaces) }
+        )
         
-        toDoItems.append(item)
+        homeViewModel.toDoItems.append(newToDo)
+        userDefaultsHelper.saveData(homeViewModel.toDoItems)
     }
 }
