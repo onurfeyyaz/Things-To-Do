@@ -12,6 +12,17 @@ struct Constants {
     static let appName = "Things To Do"
     static let toDoItemsKey = "toDoItemsKey"
     
+    struct Padding {
+        /// Small padding value is 4.0
+        static let small: CGFloat = 4.0
+        /// Medium padding value is 8.0
+        static let medium: CGFloat = 8.0
+        /// Large padding value is 16.0
+        static let large: CGFloat = 16.0
+        /// Extra large padding is 24.0
+        static let extraLarge: CGFloat = 24.0
+    }
+    
     struct Tabbar {
         static let listView = "List"
         static let addView = "Add"
