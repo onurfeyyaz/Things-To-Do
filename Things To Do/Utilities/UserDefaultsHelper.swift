@@ -22,7 +22,13 @@ final class UserDefaultsHelper<T: Codable & Equatable>: UserDefaultsHelperProtoc
     init(userDefaultsKey: String) {
         self.userDefaultsKey = userDefaultsKey
     }
-
+    
+    func addItem(_ newItem: T) {
+        var items = loadData()
+        items.append(newItem)
+        saveData(items)
+    }
+    
     func saveData(_ items: [T]) {
         do {
             let encodedData = try JSONEncoder().encode(items)

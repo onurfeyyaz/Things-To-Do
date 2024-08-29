@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
-    @ObservedObject private var viewModel = HomeViewModel()
+    @ObservedObject var viewModel: HomeViewModel
     @State private var isChecked = false
     
     var body: some View {
@@ -31,16 +31,14 @@ struct HomeView: View {
                                     .strikethrough(item.isCompleted)
                                 
                                 Button(action: {
-                                    if let index = viewModel.toDoItems.firstIndex(where: { $0.id == item.id }) {
-                                        viewModel.isToDoCompleted(index)
-                                    }
+                                    viewModel.toggleCompletion(for: item)
                                 }) {
                                     Image(systemName: item.isCompleted ? "checkmark.circle.fill" : "circle")
                                         .foregroundColor(item.isCompleted ? .green : .gray)
                                 }
                                 .buttonStyle(BorderlessButtonStyle())
                             }
-                            .padding(.vertical, 8)
+                            .padding(.vertical, Constants.Padding.medium)
                         }
                         .onDelete(perform: { indexSet in
                             viewModel.removeData(index: indexSet)
@@ -49,14 +47,11 @@ struct HomeView: View {
                 }
             }
             .navigationTitle(viewModel.toDoItems.isEmpty ? "" : Constants.HomeView.navigationTitleDoIt)
-            .onAppear {
-                //viewModel.loadData()
-            }
         } detail: {
             Text(Constants.HomeView.navigationTitleDetailforIpad)
         }
     }
 }
 #Preview {
-    HomeView()
+    HomeView(viewModel: HomeViewModel())
 }

@@ -8,10 +8,10 @@
 import Foundation
 
 protocol HomeViewModelProtocol {
-    func saveData(toDoItems: [ToDoItem])
+    func addToDoItem(_ toDoItems: ToDoItem)
     func loadData()
     func removeData(index: IndexSet)
-    func isToDoCompleted(_ index: Int)
+    func toggleCompletion(for item: ToDoItem)
 }
 
 final class HomeViewModel: ObservableObject {
@@ -27,13 +27,15 @@ final class HomeViewModel: ObservableObject {
 }
 
 extension HomeViewModel: HomeViewModelProtocol {
-    func isToDoCompleted(_ index: Int) {
-        toDoItems[index].isCompleted.toggle()
-        saveData(toDoItems: toDoItems)
+    func toggleCompletion(for item: ToDoItem) {
+        if let index = toDoItems.firstIndex(where: { $0.id == item.id }) {
+            toDoItems[index].isCompleted.toggle()
+            addToDoItem(toDoItems[index])
+        }
     }
     
-    func saveData(toDoItems: [ToDoItem]) {
-        userDefaultsHelper.saveData(toDoItems)
+    func addToDoItem(_ toDoItems: ToDoItem) {
+        userDefaultsHelper.addItem(toDoItems)
     }
     
     func removeData(index: IndexSet) {
@@ -45,5 +47,11 @@ extension HomeViewModel: HomeViewModelProtocol {
     
     func loadData() {
         toDoItems = userDefaultsHelper.loadData()
+    }
+}
+
+extension HomeViewModel: AddToDoViewModelDelegate {
+    func didLoadData() {
+        
     }
 }

@@ -10,18 +10,19 @@ import SwiftUI
 struct TabbarView: View {
     @StateObject var router = Router()
     @StateObject private var homeViewModel = HomeViewModel()
+    @StateObject private var addToDoViewModel = AddToDoViewModel()
     
     var body: some View {
         NavigationStack(path: $router.navPath) {
             TabView(selection: $router.selectedTab) {
-                HomeView()
+                HomeView(viewModel: homeViewModel)
                     .tabItem {
                         Label(Constants.Tabbar.listView, systemImage: "list.bullet")
                     }
                     .tag(0)
                     .badge(homeViewModel.toDoItems.count)
                 
-                AddToDoView(viewModel: AddToDoViewModel())
+                AddToDoView(viewModel: addToDoViewModel)
                     .tabItem {
                         Label(Constants.Tabbar.addView, systemImage: "plus.circle")
                     }
@@ -36,9 +37,9 @@ struct TabbarView: View {
             .navigationDestination(for: Router.Destination.self) { destination in
                 switch destination {
                 case .home:
-                    HomeView()
+                    HomeView(viewModel: homeViewModel)
                 case .add:
-                    AddToDoView(viewModel: AddToDoViewModel())
+                    AddToDoView(viewModel: addToDoViewModel)
                 }
             }
         }
