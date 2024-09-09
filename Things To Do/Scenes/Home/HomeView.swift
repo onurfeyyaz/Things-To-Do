@@ -23,43 +23,74 @@ struct HomeView: View {
                         .padding(.bottom)
                     Text(Constants.HomeView.emptyViewMessage)
                         .multilineTextAlignment(.center)
-                }
-                else {
+                } else {
                     List {
-                        ForEach(viewModel.toDoItems) { item in
-                            HStack {
-                                Text(item.title)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                    .strikethrough(item.isCompleted)
-                                
-                                Button(action: {
-                                    viewModel.toggleCompletion(for: item)
-                                }) {
-                                    Image(systemName: item.isCompleted ? "checkmark.circle.fill" : "circle")
-                                        .foregroundColor(item.isCompleted ? .green : .gray)
+                        ForEach(viewModel.groupedItems(), id: \.self.0) { (key, items) in
+                            Section(header: Text(viewModel.sectionHeader(for: key))) {
+                                ForEach(items) { item in
+                                    HStack {
+                                        Button(action: {
+                                            viewModel.toggleCompletion(for: item)
+                                        }) {
+                                            Image(systemName: item.isCompleted ? "checkmark.circle.fill" : "circle")
+                                                .foregroundColor(item.isCompleted ? .green : .gray)
+                                        }
+                                        .buttonStyle(BorderlessButtonStyle())
+                                        
+                                        Text(item.title)
+                                            .frame(maxWidth: .infinity, alignment: .leading)
+                                            .strikethrough(item.isCompleted)
+                                        
+                                        PriorityIndicatorView(priority: item.priority)
+
+                                    }
+                                    .padding(.vertical, Constants.Padding.medium)
                                 }
-                                .buttonStyle(BorderlessButtonStyle())
+                                .onDelete(perform: { indexSet in
+                                    if let index = indexSet.first {
+                                        viewModel.removeData(at: index)
+                                    }
+                                    viewModel.loadData()
+                                })
                             }
-                            .padding(.vertical, Constants.Padding.medium)
                         }
-                        .onDelete(perform: { indexSet in
-                            if let index = indexSet.first {
-                                viewModel.removeData(at: index)
-                            }
-                            viewModel.loadData()
-                        })
-                        .onAppear() {
-                            viewModel.loadData()
-                        }
+                    }
+                    .onAppear {
+                        viewModel.loadData()
                     }
                 }
             }
             .navigationTitle(viewModel.toDoItems.isEmpty ? "" : Constants.HomeView.navigationTitleDoIt)
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Picker("", selection: $viewModel.groupingCriteria) {
+                        Text(Constants.status).tag(GroupingCriteria.status)
+                        Text(Constants.category).tag(GroupingCriteria.category)
+                    }
+                    .pickerStyle(.menu)
+                }
+            }
         } detail: {
             Text(Constants.HomeView.navigationTitleDetailforIpad)
         }
     }
-}
-#Preview {
-    HomeView(viewModel: HomeViewModel())
+
+    // MARK: - Priority Custom View
+    struct PriorityIndicatorView: View {
+        let priority: ToDoPriority
+        
+        var body: some View {
+            switch priority {
+            case .low:
+                Image(systemName: "chevron.down.circle.fill")
+                    .foregroundStyle(Color(.systemGreen))
+            case .medium:
+                Image(systemName: "arrow.up.arrow.down.circle.fill")
+                    .foregroundStyle(Color(.systemYellow))
+            case .high:
+                Image(systemName: "chevron.up.circle.fill")
+                    .foregroundStyle(Color(.systemRed))
+            }
+        }
+    }
 }

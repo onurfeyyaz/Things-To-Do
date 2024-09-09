@@ -12,11 +12,18 @@ protocol HomeViewModelProtocol {
     func loadData()
     func removeData(at index: Int)
     func toggleCompletion(for item: ToDoItem)
+    func groupedItems() -> [(String, [ToDoItem])]
+    func sectionHeader(for key: String) -> String
+}
+
+enum GroupingCriteria {
+    case status
+    case category
 }
 
 final class HomeViewModel: ObservableObject {
-    
     @Published var toDoItems: [ToDoItem] = []
+    @Published var groupingCriteria: GroupingCriteria = .status
     
     private let userDefaultsHelper: UserDefaultsHelper<ToDoItem>
     
@@ -46,5 +53,20 @@ extension HomeViewModel: HomeViewModelProtocol {
     
     func loadData() {
         toDoItems = userDefaultsHelper.loadData()
+    }
+    
+    func groupedItems() -> [(String, [ToDoItem])] {
+        switch groupingCriteria {
+        case .status:
+            return Dictionary(grouping: toDoItems, by: { $0.status.rawValue })
+                .map { ($0.key.capitalized, $0.value) }
+        case .category:
+            return Dictionary(grouping: toDoItems, by: { $0.category })
+                .map { ($0.key, $0.value) }
+        }
+    }
+    
+    func sectionHeader(for key: String) -> String {
+        return key
     }
 }

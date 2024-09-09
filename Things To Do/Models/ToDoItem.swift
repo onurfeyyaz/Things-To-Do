@@ -7,13 +7,13 @@
 
 import Foundation
 
-enum ToDoStatus: Codable {
+enum ToDoStatus: String, Codable {
     case todo
     case doing
     case done
 }
 
-enum ToDoPriority: Codable {
+enum ToDoPriority: String, Codable {
     case low
     case medium
     case high
