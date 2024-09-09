@@ -37,6 +37,11 @@ extension HomeViewModel: HomeViewModelProtocol {
     func toggleCompletion(for item: ToDoItem) {
         if let index = toDoItems.firstIndex(where: { $0.id == item.id }) {
             toDoItems[index].isCompleted.toggle()
+            if toDoItems[index].isCompleted {
+                toDoItems[index].status = .done
+            } else {
+                toDoItems[index].status = .todo
+            }
             userDefaultsHelper.updateItem(toDoItems[index])
         }
     }
@@ -56,14 +61,17 @@ extension HomeViewModel: HomeViewModelProtocol {
     }
     
     func groupedItems() -> [(String, [ToDoItem])] {
+        let grouped: [String: [ToDoItem]]
+        
         switch groupingCriteria {
         case .status:
-            return Dictionary(grouping: toDoItems, by: { $0.status.rawValue })
-                .map { ($0.key.capitalized, $0.value) }
+            grouped = Dictionary(grouping: toDoItems, by: { $0.status.rawValue })
         case .category:
-            return Dictionary(grouping: toDoItems, by: { $0.category })
-                .map { ($0.key, $0.value) }
+            grouped = Dictionary(grouping: toDoItems, by: { $0.category })
         }
+        
+        let sortedGrouped = grouped.sorted { $0.key < $1.key }
+        return sortedGrouped.map { ($0.key.capitalized, $0.value) }
     }
     
     func sectionHeader(for key: String) -> String {
