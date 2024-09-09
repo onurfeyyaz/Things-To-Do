@@ -8,13 +8,13 @@
 import Foundation
 
 protocol UserDefaultsHelperProtocol {
-    associatedtype T: Codable & Equatable
-    func saveData(_ items: [T])
+    associatedtype T: Codable & Identifiable & Equatable
     func loadData() -> [T]
     func removeData(_ item: T)
+    func updateItem(_ item: T)
 }
 
-final class UserDefaultsHelper<T: Codable & Equatable>: UserDefaultsHelperProtocol {
+final class UserDefaultsHelper<T: Codable & Identifiable & Equatable>: UserDefaultsHelperProtocol {
     
     private let userDefaultStandart = UserDefaults.standard
     private let userDefaultsKey: String
@@ -23,13 +23,7 @@ final class UserDefaultsHelper<T: Codable & Equatable>: UserDefaultsHelperProtoc
         self.userDefaultsKey = userDefaultsKey
     }
     
-    func addItem(_ newItem: T) {
-        var items = loadData()
-        items.append(newItem)
-        saveData(items)
-    }
-    
-    func saveData(_ items: [T]) {
+    private func saveData(_ items: [T]) {
         do {
             let encodedData = try JSONEncoder().encode(items)
             userDefaultStandart.set(encodedData, forKey: userDefaultsKey)
@@ -40,6 +34,12 @@ final class UserDefaultsHelper<T: Codable & Equatable>: UserDefaultsHelperProtoc
                 //TODO: show generic alert view
             #endif
         }
+    }
+    
+    func addItem(_ newItem: T) {
+        var items = loadData()
+        items.append(newItem)
+        saveData(items)
     }
     
     func loadData() -> [T] {
@@ -58,9 +58,17 @@ final class UserDefaultsHelper<T: Codable & Equatable>: UserDefaultsHelperProtoc
         return []
     }
     
+    func updateItem(_ item: T) {
+        var items = loadData()
+        if let index = items.firstIndex(where: { $0.id == item.id }) {
+            items[index] = item
+            saveData(items)
+        }
+    }
+
     func removeData(_ item: T) {
         var items = loadData()
-        items.removeAll() { $0 == item }
+        items.removeAll(where: { $0.id == item.id })
         saveData(items)
     }
 }

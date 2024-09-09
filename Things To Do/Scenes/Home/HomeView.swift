@@ -41,8 +41,14 @@ struct HomeView: View {
                             .padding(.vertical, Constants.Padding.medium)
                         }
                         .onDelete(perform: { indexSet in
-                            viewModel.removeData(index: indexSet)
+                            if let index = indexSet.first {
+                                viewModel.removeData(at: index)
+                            }
+                            viewModel.loadData()
                         })
+                        .onAppear() {
+                            viewModel.loadData()
+                        }
                     }
                 }
             }

@@ -7,22 +7,19 @@
 
 import Foundation
 
-protocol AddToDoViewModelDelegate: AnyObject {
-    func didLoadData()
-}
-
 protocol AddToDoViewModelProtocol {
     func addToDo(title: String, description: String, category: String, deadline: Date?, reminder: Date?, priority: ToDoPriority, status: ToDoStatus, tags: String)
 }
 
-final class AddToDoViewModel: ObservableObject, AddToDoViewModelProtocol {
+final class AddToDoViewModel: ObservableObject {
     private let userDefaultsHelper: UserDefaultsHelper<ToDoItem>
-    weak var delegate: AddToDoViewModelDelegate?
     
     init(userDefaultsHelper: UserDefaultsHelper<ToDoItem> = UserDefaultsHelper<ToDoItem>(userDefaultsKey: Constants.toDoItemsKey)) {
         self.userDefaultsHelper = userDefaultsHelper
     }
-    
+}
+
+extension AddToDoViewModel: AddToDoViewModelProtocol {
     func addToDo(title: String, description: String, category: String, deadline: Date?, reminder: Date?, priority: ToDoPriority, status: ToDoStatus, tags: String) {
         let newToDo = ToDoItem(
             title: title,
@@ -36,6 +33,5 @@ final class AddToDoViewModel: ObservableObject, AddToDoViewModelProtocol {
         )
         
         userDefaultsHelper.addItem(newToDo)
-        delegate?.didLoadData()
     }
 }

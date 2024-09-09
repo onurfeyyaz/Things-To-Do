@@ -9,7 +9,6 @@ import SwiftUI
 
 struct AddToDoView: View {
     @ObservedObject var viewModel: AddToDoViewModel
-    @StateObject private var homeViewModel = HomeViewModel()
     @EnvironmentObject var router: Router
     
     @State private var title: String = ""
@@ -105,7 +104,6 @@ struct AddToDoView: View {
             priority = .low
             tags = ""
             status = .todo
-            viewModel.delegate = homeViewModel
         }
     }
 }
