@@ -12,6 +12,9 @@ struct Constants {
     static let appName = "Things To Do"
     static let toDoItemsKey = "toDoItemsKey"
     
+    static let status = "Status"
+    static let category = "Category"
+
     struct Padding {
         /// Small padding value is 4.0
         static let small: CGFloat = 4.0
@@ -21,6 +24,14 @@ struct Constants {
         static let large: CGFloat = 16.0
         /// Extra large padding is 24.0
         static let extraLarge: CGFloat = 24.0
+    }
+    
+    struct Size {
+        /// Width value is 175.0
+        static let emptyViewImageWidth: CGFloat = 175.0
+        
+        /// Height value is 175.0
+        static let emptyViewImageHeight: CGFloat = 175.0
     }
     
     struct Tabbar {
@@ -49,12 +60,10 @@ struct Constants {
         static let medium = "Medium"
         static let high = "High"
         
-        static let status = "Status"
         static let todo = "To Do"
         static let doing = "Doing"
         static let done = "Done"
         
-        static let category = "Category"
         static let tags = "Tags (comma separated)"
         
         static let hasDeadline = "Has Deadline"
@@ -69,7 +78,6 @@ struct Constants {
         static let totalTask = "Total Tasks: "
         static let completionPercentage = "Completion Percentage"
         static let taskStatusDistribution = "Task Status Distribution"
-        static let status = "Status"
         static let taskPriorityDistribution = "Task Priority Distribution"
         static let priority = "Priority"
         static let count = "Count"

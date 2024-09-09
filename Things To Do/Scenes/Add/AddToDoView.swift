@@ -37,7 +37,7 @@ struct AddToDoView: View {
                         Text(Constants.AddToDoView.high).tag(ToDoPriority.high)
                     }
                     
-                    Picker(Constants.AddToDoView.status, selection: $status) {
+                    Picker(Constants.status, selection: $status) {
                         Text(Constants.AddToDoView.todo).tag(ToDoStatus.todo)
                         Text(Constants.AddToDoView.doing).tag(ToDoStatus.doing)
                         Text(Constants.AddToDoView.done).tag(ToDoStatus.done)
@@ -47,7 +47,7 @@ struct AddToDoView: View {
                 }
                 
                 Section(header: Text(Constants.AddToDoView.sectionHeaderAdditionalInfo)) {
-                    TextField(Constants.AddToDoView.category, text: $category)
+                    TextField(Constants.category, text: $category)
                     TextField(Constants.AddToDoView.tags, text: $tags)
                 }
                 

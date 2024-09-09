@@ -17,7 +17,9 @@ struct HomeView: View {
                 if viewModel.toDoItems.isEmpty {
                     Image(systemName: "leaf.fill")
                         .resizable()
-                        .frame(width: 175, height: 175, alignment: .center)
+                        .frame(width: Constants.Size.emptyViewImageWidth,
+                               height: Constants.Size.emptyViewImageHeight,
+                               alignment: .center)
                         .padding(.bottom)
                     Text(Constants.HomeView.emptyViewMessage)
                         .multilineTextAlignment(.center)

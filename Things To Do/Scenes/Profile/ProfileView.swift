@@ -60,7 +60,7 @@ struct ProfileView: View {
                         .font(.headline)
                     Chart(statusDistribution, id: \.status) { dataPoint in
                         SectorMark(
-                            angle: .value(Constants.ProfileView.status, dataPoint.count),
+                            angle: .value(Constants.status, dataPoint.count),
                             innerRadius: .ratio(0.5),
                             angularInset: 1.5
                         )
