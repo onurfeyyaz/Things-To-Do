@@ -16,8 +16,14 @@
 		DB06ACE32C28C30C0031CCF7 /* Things_To_DoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB06ACE22C28C30C0031CCF7 /* Things_To_DoUITestsLaunchTests.swift */; };
 		DB19D0B32C345FC6003BDFF8 /* UserDefaultsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB19D0B22C345FC6003BDFF8 /* UserDefaultsHelper.swift */; };
 		DB19D0B52C361310003BDFF8 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB19D0B42C361310003BDFF8 /* AppConstants.swift */; };
+		DB19D0B82C3618E2003BDFF8 /* AddToDoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB19D0B72C3618E2003BDFF8 /* AddToDoView.swift */; };
+		DB19D0BA2C3618F0003BDFF8 /* AddToDoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB19D0B92C3618F0003BDFF8 /* AddToDoViewModel.swift */; };
+		DB19D0BC2C361947003BDFF8 /* TabbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB19D0BB2C361947003BDFF8 /* TabbarView.swift */; };
+		DB2069762C62A47600B575C9 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2069752C62A47600B575C9 /* ProfileView.swift */; };
+		DB2069782C62A8DF00B575C9 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2069772C62A8DF00B575C9 /* ProfileViewModel.swift */; };
 		DB68F8372C2B1FFB000C4B8F /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB68F8362C2B1FFB000C4B8F /* HomeViewModel.swift */; };
 		DB68F83A2C2B2028000C4B8F /* ToDoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB68F8392C2B2028000C4B8F /* ToDoItem.swift */; };
+		DB6D43D02C4AD14700EC6BE9 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6D43CF2C4AD14700EC6BE9 /* Router.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,8 +56,14 @@
 		DB06ACE22C28C30C0031CCF7 /* Things_To_DoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Things_To_DoUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		DB19D0B22C345FC6003BDFF8 /* UserDefaultsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsHelper.swift; sourceTree = "<group>"; };
 		DB19D0B42C361310003BDFF8 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
+		DB19D0B72C3618E2003BDFF8 /* AddToDoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToDoView.swift; sourceTree = "<group>"; };
+		DB19D0B92C3618F0003BDFF8 /* AddToDoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToDoViewModel.swift; sourceTree = "<group>"; };
+		DB19D0BB2C361947003BDFF8 /* TabbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarView.swift; sourceTree = "<group>"; };
+		DB2069752C62A47600B575C9 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		DB2069772C62A8DF00B575C9 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		DB68F8362C2B1FFB000C4B8F /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		DB68F8392C2B2028000C4B8F /* ToDoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItem.swift; sourceTree = "<group>"; };
+		DB6D43CF2C4AD14700EC6BE9 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				DB19D0B12C345FB8003BDFF8 /* Utilities */,
+				DB6D43CE2C4AD13400EC6BE9 /* Routes */,
 				DB68F8382C2B2013000C4B8F /* Models */,
 				DB68F8342C2B1EB8000C4B8F /* Scenes */,
 				DB06ACC52C28C30A0031CCF7 /* ThingsToDoApp.swift */,
@@ -146,10 +159,30 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
+		DB19D0B62C3618AA003BDFF8 /* Add */ = {
+			isa = PBXGroup;
+			children = (
+				DB19D0B72C3618E2003BDFF8 /* AddToDoView.swift */,
+				DB19D0B92C3618F0003BDFF8 /* AddToDoViewModel.swift */,
+			);
+			path = Add;
+			sourceTree = "<group>";
+		};
+		DB2069742C62A45D00B575C9 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				DB2069752C62A47600B575C9 /* ProfileView.swift */,
+				DB2069772C62A8DF00B575C9 /* ProfileViewModel.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		DB68F8342C2B1EB8000C4B8F /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
 				DB68F8352C2B1FE3000C4B8F /* Home */,
+				DB19D0B62C3618AA003BDFF8 /* Add */,
+				DB2069742C62A45D00B575C9 /* Profile */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -159,6 +192,7 @@
 			children = (
 				DB06ACC72C28C30A0031CCF7 /* HomeView.swift */,
 				DB68F8362C2B1FFB000C4B8F /* HomeViewModel.swift */,
+				DB19D0BB2C361947003BDFF8 /* TabbarView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -169,6 +203,14 @@
 				DB68F8392C2B2028000C4B8F /* ToDoItem.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		DB6D43CE2C4AD13400EC6BE9 /* Routes */ = {
+			isa = PBXGroup;
+			children = (
+				DB6D43CF2C4AD14700EC6BE9 /* Router.swift */,
+			);
+			path = Routes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -303,9 +345,15 @@
 			files = (
 				DB19D0B32C345FC6003BDFF8 /* UserDefaultsHelper.swift in Sources */,
 				DB19D0B52C361310003BDFF8 /* AppConstants.swift in Sources */,
+				DB6D43D02C4AD14700EC6BE9 /* Router.swift in Sources */,
 				DB06ACC82C28C30A0031CCF7 /* HomeView.swift in Sources */,
+				DB19D0B82C3618E2003BDFF8 /* AddToDoView.swift in Sources */,
+				DB19D0BC2C361947003BDFF8 /* TabbarView.swift in Sources */,
+				DB2069782C62A8DF00B575C9 /* ProfileViewModel.swift in Sources */,
 				DB68F8372C2B1FFB000C4B8F /* HomeViewModel.swift in Sources */,
 				DB68F83A2C2B2028000C4B8F /* ToDoItem.swift in Sources */,
+				DB19D0BA2C3618F0003BDFF8 /* AddToDoViewModel.swift in Sources */,
+				DB2069762C62A47600B575C9 /* ProfileView.swift in Sources */,
 				DB06ACC62C28C30A0031CCF7 /* ThingsToDoApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
